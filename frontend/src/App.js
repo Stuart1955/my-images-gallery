@@ -22,7 +22,8 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       })
-}
+    setWord('');
+  }
 
   return (
     <Container>
@@ -32,6 +33,7 @@ const App = () => {
     </div>
     </Container>
   );
+
 }
 
 export default App;

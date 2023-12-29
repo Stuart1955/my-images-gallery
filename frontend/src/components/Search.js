@@ -1,6 +1,10 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
+// const resetForm = () => {
+//     setWord('')
+// }
+
 
 const Search = ({word, setWord, handleSubmit }) => {
     return (
