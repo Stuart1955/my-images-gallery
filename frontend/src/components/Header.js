@@ -9,6 +9,9 @@ const Header = ({title}) => {
     return (
         <Navbar style={navbarStyle } data-bs-theme="light">
             <Container>
+
+
+                
                 <Navbar.Brand href="/">{title}</Navbar.Brand>            
             </Container>
         </Navbar> 
