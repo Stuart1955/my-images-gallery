@@ -28,7 +28,7 @@
       "plugin:prettier/reccomended"
     ]
   },
-  "prettier":{
+  "prettier": {
     "singleQuote": true
   },
   "browserslist": {
