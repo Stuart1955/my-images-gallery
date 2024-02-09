@@ -1,9 +1,13 @@
 """Module providing api service for image requests from frontend"""
 import os
 import requests
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 from flask_cors import CORS
+from mongo_client import mongo_client
+
+gallery = mongo_client.gallery
+images_collection = gallery.images
 
 load_dotenv(dotenv_path="./.env.local")
 
@@ -33,6 +37,21 @@ def new_image():
     data = response.json()
     return data
     # return data["tags"][1]["source"]["cover_photo"]["urls"]["small"]
+
+
+@app.route("/images", methods=["GET", "POST"])
+def images():
+    """read images from the database"""
+    if request.method == "GET":
+        images = images_collection.find({})
+        return jsonify([img for img in images])
+    if request.method == "POST":
+        image = request.get_json()
+        image["_id"] = image.get("id")
+        result = images_collection.insert_one(image)
+        inserted_id = result.inserted_id
+        return {"inserted_id": inserted_id}
+    return None
 
 
 if __name__ == "__main__":
