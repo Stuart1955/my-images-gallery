@@ -39,7 +39,7 @@ def new_image():
     # return data["tags"][1]["source"]["cover_photo"]["urls"]["small"]
 
 
-@app.route("/images", methods=["GET", "POST"])
+@app.route("/images", methods=["GET", "POST"])  # type: ignore
 def images():
     """read images from the database"""
     if request.method == "GET":
