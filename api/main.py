@@ -41,7 +41,6 @@ def new_image():
 
 @app.route("/images", methods=["GET", "POST"])  # type: ignore
 def images():
-    """read images from the database"""
     if request.method == "GET":
         images = images_collection.find({})
         return jsonify([img for img in images])
